@@ -34,7 +34,7 @@ function onSubmit() {
 
   if(lastResponse == null) return;
 
-  var fields = [
+  var messageFields = [
     {"title": "When", "value": lastResponse.getTimestamp()}
   ];
 
@@ -44,7 +44,7 @@ function onSubmit() {
     var question = itemResponses[i].getItem().getTitle();
     var answer = itemResponses[i].getResponse();
 
-    fields.push({"title": question, "value": answer});
+    messageFields.push({"title": question, "value": answer});
   }
 
   var summaryAttachment = {
@@ -52,7 +52,7 @@ function onSubmit() {
     "pretext": "New response submitted to: " + form.getTitle(),
     "title": form.getTitle() + " (responses)",
     "title_link": "https://docs.google.com/spreadsheets/d/" + form.getDestinationId(),
-    "fields": fields,
+    "fields": messageFields,
     "color": "#393939"
   };
 
