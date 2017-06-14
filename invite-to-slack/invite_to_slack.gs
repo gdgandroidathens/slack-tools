@@ -30,7 +30,7 @@ function onSubmit() {
 
   var lastPosition = responsesCount - 1;
 
-  var lastResponse = lastPosition >= 0 ? formResponses[lastPosition] : null;
+  var lastResponse = findLastResponse(lastPosition, formResponses);
 
   if(lastResponse == null) return;
 
@@ -67,3 +67,7 @@ function onSubmit() {
 
    UrlFetchApp.fetch(SLACK_INCOMING_WEBHOOK_URL, options);
 };
+
+function findLastResponse(lastPosition, formResponses) {
+  return lastPosition >= 0 ? formResponses[lastPosition] : null;
+}
